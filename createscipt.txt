@@ -64,7 +64,7 @@ CREATE TABLE [UitslagRegel]
 	UitslagId INT NOT NULL,
 	Partij Varchar(50) NOT NULL,
 	Stemmen INT NOT NULL,
-	Percentage INT NOT NULL,
+	Percentage FLOAT NOT NULL,
 	Zetels INT NOT NULL,
 	PRIMARY KEY(UitslagId),
 	FOREIGN KEY(Partij)REFERENCES [Partij](Partij)
