@@ -1,6 +1,83 @@
-CREATE TABLE []
+CREATE TABLE [Politicus]
 (
-   	ID   INT NOT NULL IDENTITY,
-	PRIMARY KEY(ID)
+   	PoliticusId   INT NOT NULL IDENTITY,
+	Naam Varchar(50) NOT NULL,
+	Partij Varchar(50) NOT NULL,
+	PRIMARY KEY(PoliticusId),
 );
 
+CREATE TABLE [Partij]
+(
+   	Partij Varchar(50) NOT NULL,
+	PartijNaam Varchar(50) NOT NULL,
+	PRIMARY KEY(Partij),
+);
+
+CREATE TABLE [PoliticusInPartij]
+(
+   	PoliticusId   INT NOT NULL,
+	Partij Varchar(50) NOT NULL,
+	Lijsttrekker BIT NOT NULL,
+	PRIMARY KEY(PoliticusId, Partij),
+	FOREIGN KEY(PoliticusId) REFERENCES [Politicus](PoliticusId),
+	FOREIGN KEY(Partij) REFERENCES [Partij](Partij)
+);
+
+CREATE TABLE [Coalitie]
+(
+   	CoalitieId INT NOT NULL,
+	PremierId INT NOT NULL,
+	Naam Varchar(50) NOT NULL,
+	Meerderheid BIT NOT NULL,
+	PRIMARY KEY(CoalitieId),
+	FOREIGN KEY(PremierId) REFERENCES [Politicus](PoliticusId)
+);
+
+CREATE TABLE [CoalitiePartij]
+(
+   	Partij Varchar(50) NOT NULL,
+	CoalitieId INT NOT NULL,
+	PRIMARY KEY(Partij, CoalitieId),
+	FOREIGN KEY(Partij) REFERENCES [Partij](Partij),
+	FOREIGN KEY(CoalitieId) REFERENCES [Coalitie](CoalitieId)
+);
+
+CREATE TABLE [Verkiezing]
+(
+   	VerkiezingId INT NOT NULL,
+	Naam Varchar(50) NOT NULL,
+	Zetels INT NOT NULL,
+	PRIMARY KEY(VerkiezingId)
+);
+
+CREATE TABLE [VerkiezingsPartij]
+(
+   	Partij Varchar(50) NOT NULL,
+	VerkiezingId INT NOT NULL,
+	PRIMARY KEY(Partij, VerkiezingId),
+	FOREIGN KEY(Partij)REFERENCES [Partij](Partij),
+	FOREIGN KEY(VerkiezingId)REFERENCES [Verkiezing](VerkiezingId)
+);
+
+CREATE TABLE [Uitslag]
+(
+   	UitslagId INT NOT NULL,
+	VerkiezingId INT NOT NULL,
+	PRIMARY KEY(UitslagId, VerkiezingId),
+	FOREIGN KEY(VerkiezingId)REFERENCES [Verkiezing](VerkiezingId)
+);
+
+CREATE TABLE [UitslagRegel]
+(
+   	RegelId INT NOT NULL,
+	UitslagId INT NOT NULL,
+	Partij Varchar(50) NOT NULL,
+	Stemmen INT NOT NULL,
+	Percentage INT NOT NULL,
+	Zetels INT NOT NULL,
+	PRIMARY KEY(RegelId),
+	FOREIGN KEY(UitslagId)REFERENCES [Uitslag](UitslagId),
+	FOREIGN KEY(Partij)REFERENCES [Partij](Partij)
+);
+
+GO
