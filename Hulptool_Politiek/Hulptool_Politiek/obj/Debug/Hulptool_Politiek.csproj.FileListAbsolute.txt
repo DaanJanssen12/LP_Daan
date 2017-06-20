@@ -1,0 +1,9 @@
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\Hulptool_Politiek\bin\Debug\Hulptool_Politiek.exe.config
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\Hulptool_Politiek\bin\Debug\Hulptool_Politiek.exe
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\Hulptool_Politiek\bin\Debug\Hulptool_Politiek.pdb
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\Hulptool_Politiek\obj\Debug\Hulptool_Politiek.csprojResolveAssemblyReference.cache
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\Hulptool_Politiek\obj\Debug\Hulptool_Politiek.MainWindow.resources
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\Hulptool_Politiek\obj\Debug\Hulptool_Politiek.Properties.Resources.resources
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\Hulptool_Politiek\obj\Debug\Hulptool_Politiek.csproj.GenerateResource.Cache
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\Hulptool_Politiek\obj\Debug\Hulptool_Politiek.exe
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\Hulptool_Politiek\obj\Debug\Hulptool_Politiek.pdb

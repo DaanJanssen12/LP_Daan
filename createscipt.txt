@@ -59,25 +59,24 @@ CREATE TABLE [VerkiezingsPartij]
 	FOREIGN KEY(VerkiezingId)REFERENCES [Verkiezing](VerkiezingId)
 );
 
-CREATE TABLE [Uitslag]
-(
-   	UitslagId INT NOT NULL,
-	VerkiezingId INT NOT NULL,
-	PRIMARY KEY(UitslagId, VerkiezingId),
-	FOREIGN KEY(VerkiezingId)REFERENCES [Verkiezing](VerkiezingId)
-);
-
 CREATE TABLE [UitslagRegel]
 (
-   	RegelId INT NOT NULL,
 	UitslagId INT NOT NULL,
 	Partij Varchar(50) NOT NULL,
 	Stemmen INT NOT NULL,
 	Percentage INT NOT NULL,
 	Zetels INT NOT NULL,
-	PRIMARY KEY(RegelId),
-	FOREIGN KEY(UitslagId)REFERENCES [Uitslag](UitslagId),
+	PRIMARY KEY(UitslagId),
 	FOREIGN KEY(Partij)REFERENCES [Partij](Partij)
+);
+
+CREATE TABLE [Uitslag]
+(
+   	UitslagId INT NOT NULL,
+	VerkiezingId INT NOT NULL,
+	PRIMARY KEY(UitslagId, VerkiezingId),
+	FOREIGN KEY(VerkiezingId)REFERENCES [Verkiezing](VerkiezingId),
+	FOREIGN KEY(UitslagId)REFERENCES [UitslagRegel](UitslagId)
 );
 
 GO

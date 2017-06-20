@@ -28,5 +28,10 @@ namespace Hulptool_Politiek.Models
         {
             results.Add(result);
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

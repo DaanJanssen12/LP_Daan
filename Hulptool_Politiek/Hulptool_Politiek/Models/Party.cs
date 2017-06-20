@@ -24,5 +24,10 @@ namespace Hulptool_Politiek.Models
         {
             Members.Add(politician);
         }
+
+        public override string ToString()
+        {
+            return Abbreviation.ToString();
+        }
     }
 }

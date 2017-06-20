@@ -10,10 +10,10 @@ namespace Hulptool_Politiek.Models
     {
         public Party Party { get; private set; }
         public int Votes { get; private set; }
-        public int Percentage { get; private set; }
+        public double Percentage { get; private set; }
         public int Seats { get; private set; }
 
-        public ElectionResult(Party party, int votes, int percentage, int seats)
+        public ElectionResult(Party party, int votes, double percentage, int seats)
         {
             Party = party;
             Votes = votes;
