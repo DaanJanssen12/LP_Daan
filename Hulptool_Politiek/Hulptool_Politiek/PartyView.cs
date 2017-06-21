@@ -66,7 +66,7 @@ namespace Hulptool_Politiek
             {
                 oldParty = tbAbbreviation.Text;
             }
-            party = new Party(tbPartyName.Text, tbAbbreviation.Text, (Politician)cbLeadCandidate.SelectedItem);
+            party = new Party(tbPartyName.Text, tbAbbreviation.Text, (Politician)cbLeadCandidate.SelectedItem, 0);
             sql.UpdateParty(party, oldParty);
         }
     }

@@ -8,9 +8,12 @@ namespace Hulptool_Politiek.Models
 {
     public class Coalition
     {
-        public string Name { get; private set; }
-        public Politician Premier { get; private set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public Politician Premier { get; set; }
+        public string ElectionName { get; set; }
         public List<ElectionResult> Parties = new List<ElectionResult>();
+        public bool Mayority { get; set; }
 
         public Coalition()
         {
@@ -21,8 +24,13 @@ namespace Hulptool_Politiek.Models
         {
             Name = name;
             Parties = parties;
+            SelectPremier();
+        }
+
+        public void SelectPremier()
+        {
             ElectionResult biggest = null;
-            foreach (ElectionResult party in parties)
+            foreach (ElectionResult party in Parties)
             {
                 if (biggest == null || party.Votes > biggest.Votes)
                 {
@@ -32,7 +40,7 @@ namespace Hulptool_Politiek.Models
             Premier = biggest.Party.LeadCandidate;
         }
 
-        public bool Mayority(List<ElectionResult> results, Election election)
+        public bool aMayority(List<ElectionResult> results, Election election)
         {
             int seats = 0;
             foreach (ElectionResult result in results)
@@ -47,12 +55,19 @@ namespace Hulptool_Politiek.Models
             }
             if (seats > (election.Seats / 2))
             {
+                Mayority = true;
                 return true;
             }
             else
             {
+                Mayority = false;
                 return false;
             }
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

@@ -14,6 +14,11 @@ namespace Hulptool_Politiek.Models
         public double Percentage { get; set; }
         public int Seats { get; set; }
 
+        public ElectionResult()
+        {
+                
+        }
+
         public ElectionResult(Party party, int votes, double percentage, int seats, int id)
         {
             Party = party;

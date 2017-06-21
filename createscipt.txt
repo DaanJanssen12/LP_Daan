@@ -25,7 +25,7 @@ CREATE TABLE [PoliticusInPartij]
 
 CREATE TABLE [Coalitie]
 (
-   	CoalitieId INT NOT NULL,
+   	CoalitieId INT NOT NULL IDENTITY,
 	PremierId INT NOT NULL,
 	Naam Varchar(50) NOT NULL,
 	Meerderheid BIT NOT NULL,

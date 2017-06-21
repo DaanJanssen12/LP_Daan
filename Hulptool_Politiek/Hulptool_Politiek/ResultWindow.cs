@@ -16,24 +16,56 @@ namespace Hulptool_Politiek
     {
         ISql sql = new Sql();
         Election election;
-        public ResultWindow(Election election)
+        public ResultWindow(Election election, bool newResult)
         {
             InitializeComponent();
             this.election = election;
             lblTitle.Text = election.Name;
-            foreach (Party party in election.parties)
+            if (newResult)
             {
-                cbParty.Items.Add(party);
+                foreach (Party party in sql.LoadAllParties())
+                {
+                    cbParty.Items.Add(party);
+                }
+                election.parties = new List<Party>();
+                election.results = new List<ElectionResult>();
+                tbDateTime.Visible = true;
+                lblDateTime.Visible = true;
+                Update.Text = "Nieuw resultaat";
             }
+            else
+            {
+                foreach (Party party in election.parties)
+                {
+                    cbParty.Items.Add(party);
+                }
+                tbDateTime.Visible = false;
+                lblDateTime.Visible = false;
+                Update.Text = "Pas aan";
+            }
+
         }
 
         private void Update_Click(object sender, EventArgs e)
         {
             int votes;
-            if (int.TryParse(tbVotes.Text, out votes) && cbParty.SelectedItem != null)
-            {
-                election.ChangeResults(cbParty.SelectedItem.ToString(), votes, sql);
+            if (Update.Text == "Pas aan")
+            {               
+                if (int.TryParse(tbVotes.Text, out votes) && cbParty.SelectedItem != null)
+                {
+                    election.ChangeResults(cbParty.SelectedItem.ToString(), votes, sql);
+                }
             }
+            else if (Update.Text == "Nieuw Resultaat")
+            {
+                DateTime temp;
+                if (DateTime.TryParse(tbDateTime.Text, out temp) && int.TryParse(tbVotes.Text, out votes) && cbParty.SelectedItem != null)
+                {
+                    election.AddParty((Party)cbParty.SelectedItem);
+                    election.AddResult(new ElectionResult());
+                }
+            }
+            
         }
     }
 }
