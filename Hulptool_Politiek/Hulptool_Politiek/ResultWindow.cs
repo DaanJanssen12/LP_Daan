@@ -60,6 +60,7 @@ namespace Hulptool_Politiek
                 {
                     election.ChangeResults(cbParty.SelectedItem.ToString(), votes, sql);
                     MessageBox.Show("De uitslag is succelvol aangepast.");
+                    this.Close();
                 }
             }
             else if (Update.Text == "Nieuw resultaat")
@@ -74,6 +75,7 @@ namespace Hulptool_Politiek
                     result.CalculateSeats(Convert.ToInt32(tbVotes.Text));
                     sql.NewResult(result, election.Name);
                     MessageBox.Show("De uitslag is succelvol opgeslagen.");
+                    this.Close();
                 }
             }
             

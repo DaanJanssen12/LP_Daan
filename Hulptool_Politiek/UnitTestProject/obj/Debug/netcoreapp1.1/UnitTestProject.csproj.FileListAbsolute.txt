@@ -1,0 +1,15 @@
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\UnitTestProject\bin\Debug\netcoreapp1.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\UnitTestProject\bin\Debug\netcoreapp1.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\UnitTestProject\bin\Debug\netcoreapp1.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\UnitTestProject\bin\Debug\netcoreapp1.1\UnitTestProject.deps.json
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\UnitTestProject\bin\Debug\netcoreapp1.1\UnitTestProject.runtimeconfig.json
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\UnitTestProject\bin\Debug\netcoreapp1.1\UnitTestProject.runtimeconfig.dev.json
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\UnitTestProject\bin\Debug\netcoreapp1.1\UnitTestProject.dll
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\UnitTestProject\bin\Debug\netcoreapp1.1\UnitTestProject.pdb
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\UnitTestProject\bin\Debug\netcoreapp1.1\Hulptool_Politiek.exe
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\UnitTestProject\bin\Debug\netcoreapp1.1\Hulptool_Politiek.pdb
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\UnitTestProject\bin\Debug\netcoreapp1.1\Hulptool_Politiek.exe.config
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\UnitTestProject\obj\Debug\netcoreapp1.1\UnitTestProject.csprojResolveAssemblyReference.cache
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\UnitTestProject\obj\Debug\netcoreapp1.1\UnitTestProject.AssemblyInfo.cs
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\UnitTestProject\obj\Debug\netcoreapp1.1\UnitTestProject.dll
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\UnitTestProject\obj\Debug\netcoreapp1.1\UnitTestProject.pdb

@@ -69,6 +69,7 @@ namespace Hulptool_Politiek
             party = new Party(tbPartyName.Text, tbAbbreviation.Text, (Politician)cbLeadCandidate.SelectedItem, 0);
             sql.UpdateParty(party, oldParty);
             MessageBox.Show("De partij is succesvol opgeslagen.");
+            this.Close();
         }
     }
 }
