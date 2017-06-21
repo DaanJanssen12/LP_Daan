@@ -144,7 +144,7 @@ namespace Hulptool_Politiek
         private void btnExport_Click(object sender, EventArgs e)
         {
             Coalition coalition = (Coalition)cbCoaltion.SelectedItem;
-            string path = "test.txt";
+            string path = "CoalitieVoorstel.txt";
 
             using (StreamWriter streamWriter = new StreamWriter(path))
             {

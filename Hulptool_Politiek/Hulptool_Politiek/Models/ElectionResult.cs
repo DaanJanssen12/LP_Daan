@@ -28,6 +28,13 @@ namespace Hulptool_Politiek.Models
             ResultId = id;
         }
 
+        public void CalculateSeats(int votes)
+        {
+            Votes = votes;
+            Percentage = 1;
+            Seats = (Int32)Math.Round((Percentage * Seats), 0, MidpointRounding.AwayFromZero);
+        }
+
         public override string ToString()
         {
             return Party.Abbreviation + " - stemmen: " + Votes.ToString() + " - zetels: " + Seats.ToString();

@@ -62,7 +62,10 @@ namespace Hulptool_Politiek
                 if (DateTime.TryParse(tbDateTime.Text, out temp) && int.TryParse(tbVotes.Text, out votes) && cbParty.SelectedItem != null)
                 {
                     election.AddParty((Party)cbParty.SelectedItem);
-                    election.AddResult(new ElectionResult());
+                    ElectionResult result = new ElectionResult();
+                    election.AddResult(result);
+                    result.CalculateSeats(Convert.ToInt32(tbVotes.Text));
+                    sql.NewResult(result, election.Name);
                 }
             }
             

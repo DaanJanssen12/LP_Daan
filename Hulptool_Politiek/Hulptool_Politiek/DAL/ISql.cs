@@ -17,6 +17,7 @@ namespace Hulptool_Politiek.DAL
         void UpdateParty(Party newParty, string oldParty);
 
         void UpdateResult(ElectionResult result);
+        void NewResult(ElectionResult result, string election);
 
         void NewCoalition(Coalition coalition);
         List<Coalition> LoadAllCoalitions();
