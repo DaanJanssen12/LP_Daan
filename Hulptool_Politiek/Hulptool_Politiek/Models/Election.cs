@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Hulptool_Politiek.DAL;
 
 namespace Hulptool_Politiek.Models
 {
@@ -19,7 +20,7 @@ namespace Hulptool_Politiek.Models
             Seats = seats;
         }
 
-        public void ChangeResults(string partyAbbreviation, int votes)
+        public void ChangeResults(string partyAbbreviation, int votes, ISql sql)
         {
             int totalVotes = 0;
             foreach (ElectionResult result in results)
@@ -33,9 +34,11 @@ namespace Hulptool_Politiek.Models
 
             foreach (ElectionResult result in results)
             {
-                result.Percentage = (result.Votes / totalVotes);
-                result.Seats = ((result.Votes / totalVotes) * Seats);
-                //Sql query
+                result.Percentage = ((double)result.Votes / (double)totalVotes);
+                result.Percentage = Math.Round(result.Percentage, 4, MidpointRounding.AwayFromZero);
+                result.Percentage = result.Percentage * 100;
+                result.Seats = (Int32)(Math.Round((((double)result.Votes / (double)totalVotes) * Seats), 0, MidpointRounding.AwayFromZero));                
+                sql.UpdateResult(result);
             }
 
         }

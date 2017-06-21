@@ -38,9 +38,14 @@
             this.lbParties = new System.Windows.Forms.ListBox();
             this.btnNewParty = new System.Windows.Forms.Button();
             this.btnEditResults = new System.Windows.Forms.Button();
+            this.btnMakeCoalition = new System.Windows.Forms.Button();
+            this.tbCoalitionName = new System.Windows.Forms.TextBox();
+            this.gbEdit = new System.Windows.Forms.GroupBox();
+            this.lblCoalitionName = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.tpResults.SuspendLayout();
             this.tpParties.SuspendLayout();
+            this.gbEdit.SuspendLayout();
             this.SuspendLayout();
             // 
             // clbParties
@@ -73,11 +78,10 @@
             // lblMayority
             // 
             this.lblMayority.AutoSize = true;
-            this.lblMayority.Location = new System.Drawing.Point(516, 122);
+            this.lblMayority.Location = new System.Drawing.Point(6, 170);
             this.lblMayority.Name = "lblMayority";
-            this.lblMayority.Size = new System.Drawing.Size(35, 13);
+            this.lblMayority.Size = new System.Drawing.Size(0, 13);
             this.lblMayority.TabIndex = 3;
-            this.lblMayority.Text = "label1";
             // 
             // tabControl
             // 
@@ -92,11 +96,10 @@
             // 
             // tpResults
             // 
-            this.tpResults.Controls.Add(this.btnEditResults);
+            this.tpResults.Controls.Add(this.gbEdit);
             this.tpResults.Controls.Add(this.cbElection);
             this.tpResults.Controls.Add(this.clbParties);
             this.tpResults.Controls.Add(this.btnPartyOverview);
-            this.tpResults.Controls.Add(this.lblMayority);
             this.tpResults.Location = new System.Drawing.Point(4, 22);
             this.tpResults.Name = "tpResults";
             this.tpResults.Padding = new System.Windows.Forms.Padding(3);
@@ -138,13 +141,53 @@
             // 
             // btnEditResults
             // 
-            this.btnEditResults.Location = new System.Drawing.Point(351, 73);
+            this.btnEditResults.Location = new System.Drawing.Point(3, 19);
             this.btnEditResults.Name = "btnEditResults";
             this.btnEditResults.Size = new System.Drawing.Size(200, 23);
             this.btnEditResults.TabIndex = 4;
             this.btnEditResults.Text = "Uitslag aanpassen";
             this.btnEditResults.UseVisualStyleBackColor = true;
             this.btnEditResults.Click += new System.EventHandler(this.btnEditResults_Click);
+            // 
+            // btnMakeCoalition
+            // 
+            this.btnMakeCoalition.Location = new System.Drawing.Point(0, 144);
+            this.btnMakeCoalition.Name = "btnMakeCoalition";
+            this.btnMakeCoalition.Size = new System.Drawing.Size(197, 23);
+            this.btnMakeCoalition.TabIndex = 5;
+            this.btnMakeCoalition.Text = "Vorm Coalitie";
+            this.btnMakeCoalition.UseVisualStyleBackColor = true;
+            this.btnMakeCoalition.Click += new System.EventHandler(this.btnMakeCoalition_Click);
+            // 
+            // tbCoalitionName
+            // 
+            this.tbCoalitionName.Location = new System.Drawing.Point(97, 118);
+            this.tbCoalitionName.Name = "tbCoalitionName";
+            this.tbCoalitionName.Size = new System.Drawing.Size(100, 20);
+            this.tbCoalitionName.TabIndex = 6;
+            // 
+            // gbEdit
+            // 
+            this.gbEdit.Controls.Add(this.lblCoalitionName);
+            this.gbEdit.Controls.Add(this.btnEditResults);
+            this.gbEdit.Controls.Add(this.tbCoalitionName);
+            this.gbEdit.Controls.Add(this.btnMakeCoalition);
+            this.gbEdit.Controls.Add(this.lblMayority);
+            this.gbEdit.Location = new System.Drawing.Point(351, 64);
+            this.gbEdit.Name = "gbEdit";
+            this.gbEdit.Size = new System.Drawing.Size(203, 197);
+            this.gbEdit.TabIndex = 7;
+            this.gbEdit.TabStop = false;
+            this.gbEdit.Visible = false;
+            // 
+            // lblCoalitionName
+            // 
+            this.lblCoalitionName.AutoSize = true;
+            this.lblCoalitionName.Location = new System.Drawing.Point(6, 121);
+            this.lblCoalitionName.Name = "lblCoalitionName";
+            this.lblCoalitionName.Size = new System.Drawing.Size(38, 13);
+            this.lblCoalitionName.TabIndex = 7;
+            this.lblCoalitionName.Text = "Naam:";
             // 
             // MainWindow
             // 
@@ -156,8 +199,9 @@
             this.Text = "Hulptool Politiek";
             this.tabControl.ResumeLayout(false);
             this.tpResults.ResumeLayout(false);
-            this.tpResults.PerformLayout();
             this.tpParties.ResumeLayout(false);
+            this.gbEdit.ResumeLayout(false);
+            this.gbEdit.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -174,6 +218,10 @@
         private System.Windows.Forms.ListBox lbParties;
         private System.Windows.Forms.Button btnNewParty;
         private System.Windows.Forms.Button btnEditResults;
+        private System.Windows.Forms.Button btnMakeCoalition;
+        private System.Windows.Forms.TextBox tbCoalitionName;
+        private System.Windows.Forms.GroupBox gbEdit;
+        private System.Windows.Forms.Label lblCoalitionName;
     }
 }
 

@@ -7,7 +7,7 @@ using Hulptool_Politiek.Models;
 
 namespace Hulptool_Politiek.DAL
 {
-    interface ISql
+    public interface ISql
     {
         List<Election> LoadElections();
         List<ElectionResult> LoadResultsForElection(Election election);
@@ -15,5 +15,7 @@ namespace Hulptool_Politiek.DAL
         List<Politician> LoadAllPoliticians();
 
         void UpdateParty(Party newParty, string oldParty);
+
+        void UpdateResult(ElectionResult result);
     }
 }

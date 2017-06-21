@@ -59,7 +59,7 @@ namespace Hulptool_Politiek.DAL
         public List<ElectionResult> LoadResultsForElection(Election election)
         {
             List<ElectionResult> results = new List<ElectionResult>();
-            string sql = "SELECT ur.Stemmen, ur.Percentage, ur.Zetels, pt.Partij, pt.PartijNaam, p.Naam " +
+            string sql = "SELECT ur.UitslagId, ur.Stemmen, ur.Percentage, ur.Zetels, pt.Partij, pt.PartijNaam, p.Naam " +
                 "FROM UitslagRegel " +
                 "ur JOIN Uitslag u on u.UitslagId = ur.UitslagId " +
                 "JOIN Verkiezing v on v.VerkiezingId = u.verkiezingId " +
@@ -78,7 +78,7 @@ namespace Hulptool_Politiek.DAL
                 {
                     while (reader.Read())
                     {
-                        results.Add(new ElectionResult(new Party(reader["PartijNaam"].ToString(), reader["Partij"].ToString(), new Politician(reader["Naam"].ToString())), (Int32)reader["Stemmen"], Convert.ToDouble(reader["Percentage"]), (Int32)reader["Zetels"]));
+                        results.Add(new ElectionResult(new Party(reader["PartijNaam"].ToString(), reader["Partij"].ToString(), new Politician(reader["Naam"].ToString())), (Int32)reader["Stemmen"], Convert.ToDouble(reader["Percentage"]), (Int32)reader["Zetels"], (Int32)reader["UitslagId"]));
                     }
                 }
             }
@@ -115,6 +115,24 @@ namespace Hulptool_Politiek.DAL
                 cmd.Parameters.Add(new SqlParameter("@partijNaam", newParty.Name));
                 cmd.Parameters.Add(new SqlParameter("@lijsttrekker", newParty.LeadCandidate.Name));
                 cmd.Parameters.Add(new SqlParameter("@oldPartij", oldParty));
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void UpdateResult(ElectionResult result)
+        {
+            string sql = "UPDATE UitslagRegel " +
+                "SET Stemmen = @stemmen, Percentage = @percentage, Zetels = @zetels " +
+                "WHERE UitslagId = @id";
+            using (var db = new SqlConnection(connectionString))
+            {
+                db.Open();
+                SqlCommand cmd = new SqlCommand(sql, db);
+                cmd.Parameters.Add(new SqlParameter("@id", result.ResultId));
+                cmd.Parameters.Add(new SqlParameter("@stemmen", result.Votes));
+                cmd.Parameters.Add(new SqlParameter("@percentage", result.Percentage));
+                cmd.Parameters.Add(new SqlParameter("@zetels", result.Seats));
 
                 cmd.ExecuteNonQuery();
             }

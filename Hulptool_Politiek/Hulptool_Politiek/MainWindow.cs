@@ -30,6 +30,7 @@ namespace Hulptool_Politiek
         private void btnPartyOverview_Click(object sender, EventArgs e)
         {
             election = (Election)cbElection.SelectedItem;
+            gbEdit.Visible = true;
             results = sql.LoadResultsForElection(election);
             foreach (ElectionResult result in results)
             {
@@ -45,12 +46,12 @@ namespace Hulptool_Politiek
             foreach (object result in clbParties.CheckedItems)
             {
                 ElectionResult res = (ElectionResult)result;
-                coalition.Parties.Add(res.Party);
+                coalition.Parties.Add(res);
             }
             if (e.NewValue == CheckState.Checked)
             {
                 ElectionResult result = (ElectionResult)clbParties.Items[e.Index];
-                coalition.Parties.Add(result.Party);
+                coalition.Parties.Add(result);
             }               
             if (coalition.Mayority(results, election) == true)
             {
@@ -97,6 +98,22 @@ namespace Hulptool_Politiek
         {
             ResultWindow result = new ResultWindow(election);
             result.ShowDialog();
+        }
+
+        private void btnMakeCoalition_Click(object sender, EventArgs e)
+        {           
+            if (tbCoalitionName.Text != null && clbParties.CheckedItems.Count > 1)
+            {
+                List<ElectionResult> parties = new List<ElectionResult>();
+                foreach (object result in clbParties.CheckedItems)
+                {
+                    ElectionResult res = (ElectionResult)result;
+                    parties.Add(res);
+                }
+
+                Coalition coalition = new Coalition(tbCoalitionName.Text, parties);
+            }
+            
         }
     }
 }

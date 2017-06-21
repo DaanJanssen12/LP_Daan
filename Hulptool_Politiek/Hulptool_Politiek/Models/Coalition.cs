@@ -10,17 +10,26 @@ namespace Hulptool_Politiek.Models
     {
         public string Name { get; private set; }
         public Politician Premier { get; private set; }
-        public List<Party> Parties { get; set; }
+        public List<ElectionResult> Parties = new List<ElectionResult>();
 
         public Coalition()
         {
-            Parties = new List<Party>();
+
         }
 
-        public Coalition(string name, List<Party> parties)
+        public Coalition(string name, List<ElectionResult> parties)
         {
             Name = name;
             Parties = parties;
+            ElectionResult biggest = null;
+            foreach (ElectionResult party in parties)
+            {
+                if (biggest == null || party.Votes > biggest.Votes)
+                {
+                    biggest = party;
+                }
+            }
+            Premier = biggest.Party.LeadCandidate;
         }
 
         public bool Mayority(List<ElectionResult> results, Election election)
@@ -28,12 +37,11 @@ namespace Hulptool_Politiek.Models
             int seats = 0;
             foreach (ElectionResult result in results)
             {
-                foreach (Party party in Parties)
+                foreach (ElectionResult party in Parties)
                 {
-                    if (result.Party == party)
+                    if (result.Party == party.Party)
                     {
                         seats = seats + result.Seats;
-                        System.Windows.Forms.MessageBox.Show(seats.ToString());
                     }
                 }
             }

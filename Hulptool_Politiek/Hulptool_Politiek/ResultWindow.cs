@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Hulptool_Politiek.Models;
+using Hulptool_Politiek.DAL;
 
 namespace Hulptool_Politiek
 {
     public partial class ResultWindow : Form
     {
+        ISql sql = new Sql();
         Election election;
         public ResultWindow(Election election)
         {
@@ -30,7 +32,7 @@ namespace Hulptool_Politiek
             int votes;
             if (int.TryParse(tbVotes.Text, out votes) && cbParty.SelectedItem != null)
             {
-                election.ChangeResults(cbParty.SelectedItem.ToString(), votes);
+                election.ChangeResults(cbParty.SelectedItem.ToString(), votes, sql);
             }
         }
     }
