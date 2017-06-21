@@ -58,10 +58,25 @@
     <Compile Include="Models\ElectionResult.cs" />
     <Compile Include="Models\Party.cs" />
     <Compile Include="Models\Politician.cs" />
+    <Compile Include="PartyView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PartyView.Designer.cs">
+      <DependentUpon>PartyView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResultWindow.Designer.cs">
+      <DependentUpon>ResultWindow.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PartyView.resx">
+      <DependentUpon>PartyView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -72,6 +87,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ResultWindow.resx">
+      <DependentUpon>ResultWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

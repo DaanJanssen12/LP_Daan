@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hulptool_Politiek.Models
 {
-    class Party
+    public class Party
     {
         public string Name { get; private set; }
         public string Abbreviation { get; private set; }

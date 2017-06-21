@@ -1,0 +1,29 @@
+CREATE PROC NieuwePartij(@partij Varchar(50), @partijNaam Varchar(50), @lijsttrekker Varchar(50), @oldPartij Varchar(50))
+AS
+DECLARE @lijsttrekkerId INT
+SET @lijsttrekkerId = (SELECT PoliticusId FROM Politicus WHERE Naam = @lijsttrekker)
+DECLARE @partijId INT
+IF EXISTS(SELECT * FROM Partij WHERE Partij = @oldPartij)
+	BEGIN
+		SET @partijId = (SELECT PartijId FROM Partij WHERE Partij = @oldPartij)
+		DECLARE @politicusId INT
+		SET @politicusId = (SELECT PoliticusId FROM PoliticusInPartij WHERE PartijId = @partijId and Lijsttrekker = 1)
+		UPDATE Partij
+		SET Partij = @partij, PartijNaam = @partijNaam
+		WHERE Partij = @oldPartij
+		UPDATE PoliticusInPartij
+		SET Lijsttrekker = 0
+		WHERE PoliticusId = @politicusId
+		UPDATE PoliticusInPartij
+		SET Lijsttrekker = 1, PartijId = @partijId
+		WHERE PoliticusId = @lijsttrekkerId
+	END
+ELSE
+	BEGIN
+		INSERT INTO Partij(Partij, PartijNaam)
+		VALUES(@partij, @partijNaam)		
+		SET @partijId = (SELECT PartijId FROM Partij WHERE Partij = @partij)
+		UPDATE PoliticusInPartij
+		SET Lijsttrekker = 1, PartijId = @partijId
+		WHERE PoliticusId = @lijsttrekkerId
+	END

@@ -7,3 +7,5 @@ C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\Hulptool_Politiek\obj\Debug
 C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\Hulptool_Politiek\obj\Debug\Hulptool_Politiek.csproj.GenerateResource.Cache
 C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\Hulptool_Politiek\obj\Debug\Hulptool_Politiek.exe
 C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\Hulptool_Politiek\obj\Debug\Hulptool_Politiek.pdb
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\Hulptool_Politiek\obj\Debug\Hulptool_Politiek.PartyView.resources
+C:\Users\GEbruiker\Desktop\LP_Daan\Hulptool_Politiek\Hulptool_Politiek\obj\Debug\Hulptool_Politiek.ResultWindow.resources

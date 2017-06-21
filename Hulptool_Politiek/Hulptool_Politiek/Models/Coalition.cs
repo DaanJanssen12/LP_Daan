@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hulptool_Politiek.Models
 {
-    class Coalition
+    public class Coalition
     {
         public string Name { get; private set; }
         public Politician Premier { get; private set; }

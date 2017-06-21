@@ -11,5 +11,9 @@ namespace Hulptool_Politiek.DAL
     {
         List<Election> LoadElections();
         List<ElectionResult> LoadResultsForElection(Election election);
+        List<Party> LoadAllParties();
+        List<Politician> LoadAllPoliticians();
+
+        void UpdateParty(Party newParty, string oldParty);
     }
 }

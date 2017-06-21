@@ -6,13 +6,18 @@ using System.Threading.Tasks;
 
 namespace Hulptool_Politiek.Models
 {
-    class Politician
+    public class Politician
     {
         public string Name { get; private set; }
 
         public Politician(string name)
         {
             Name = name;
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

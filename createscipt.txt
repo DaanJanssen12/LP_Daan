@@ -2,25 +2,25 @@ CREATE TABLE [Politicus]
 (
    	PoliticusId   INT NOT NULL IDENTITY,
 	Naam Varchar(50) NOT NULL,
-	Partij Varchar(50) NOT NULL,
-	PRIMARY KEY(PoliticusId),
+	PRIMARY KEY(PoliticusId)
 );
 
 CREATE TABLE [Partij]
 (
+	PartijId INT NOT NULL IDENTITY
    	Partij Varchar(50) NOT NULL,
 	PartijNaam Varchar(50) NOT NULL,
-	PRIMARY KEY(Partij),
+	PRIMARY KEY(Partij)
 );
 
 CREATE TABLE [PoliticusInPartij]
 (
    	PoliticusId   INT NOT NULL,
-	Partij Varchar(50) NOT NULL,
+	PartijID INT NOT NULL,
 	Lijsttrekker BIT NOT NULL,
-	PRIMARY KEY(PoliticusId, Partij),
+	PRIMARY KEY(PoliticusId, PartijId),
 	FOREIGN KEY(PoliticusId) REFERENCES [Politicus](PoliticusId),
-	FOREIGN KEY(Partij) REFERENCES [Partij](Partij)
+	FOREIGN KEY(PartijId) REFERENCES [Partij](PartijId)
 );
 
 CREATE TABLE [Coalitie]
@@ -35,10 +35,10 @@ CREATE TABLE [Coalitie]
 
 CREATE TABLE [CoalitiePartij]
 (
-   	Partij Varchar(50) NOT NULL,
+   	PartijId INT NOT NULL,
 	CoalitieId INT NOT NULL,
-	PRIMARY KEY(Partij, CoalitieId),
-	FOREIGN KEY(Partij) REFERENCES [Partij](Partij),
+	PRIMARY KEY(PartijId, CoalitieId),
+	FOREIGN KEY(PartijId) REFERENCES [Partij](PartijId),
 	FOREIGN KEY(CoalitieId) REFERENCES [Coalitie](CoalitieId)
 );
 
@@ -52,22 +52,22 @@ CREATE TABLE [Verkiezing]
 
 CREATE TABLE [VerkiezingsPartij]
 (
-   	Partij Varchar(50) NOT NULL,
+   	PartijId INT NOT NULL,
 	VerkiezingId INT NOT NULL,
-	PRIMARY KEY(Partij, VerkiezingId),
-	FOREIGN KEY(Partij)REFERENCES [Partij](Partij),
+	PRIMARY KEY(PartijId, VerkiezingId),
+	FOREIGN KEY(PartijId)REFERENCES [Partij](PartijId),
 	FOREIGN KEY(VerkiezingId)REFERENCES [Verkiezing](VerkiezingId)
 );
 
 CREATE TABLE [UitslagRegel]
 (
-	UitslagId INT NOT NULL,
-	Partij Varchar(50) NOT NULL,
+	UitslagId INT NOT NULL IDENTITY,
+	PartijId INT NOT NULL,
 	Stemmen INT NOT NULL,
 	Percentage FLOAT NOT NULL,
 	Zetels INT NOT NULL,
 	PRIMARY KEY(UitslagId),
-	FOREIGN KEY(Partij)REFERENCES [Partij](Partij)
+	FOREIGN KEY(PartijId)REFERENCES [Partij](PartijId)
 );
 
 CREATE TABLE [Uitslag]

@@ -21,7 +21,7 @@ namespace Hulptool_Politiek
         public MainWindow()
         {
             InitializeComponent();
-            foreach(Election election in sql.LoadElections())
+            foreach (Election election in sql.LoadElections())
             {
                 cbElection.Items.Add(election);
             }
@@ -33,19 +33,25 @@ namespace Hulptool_Politiek
             results = sql.LoadResultsForElection(election);
             foreach (ElectionResult result in results)
             {
-                clbParties.Items.Add(result.Party, false);
+                election.AddResult(result);
+                election.AddParty(result.Party);
+                clbParties.Items.Add(result, false);
             }
         }
 
         private void clbParties_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             Coalition coalition = new Coalition();
-            foreach (object party in clbParties.CheckedItems)
+            foreach (object result in clbParties.CheckedItems)
             {
-                coalition.Parties.Add((Party)party);
+                ElectionResult res = (ElectionResult)result;
+                coalition.Parties.Add(res.Party);
             }
             if (e.NewValue == CheckState.Checked)
-                coalition.Parties.Add((Party)clbParties.Items[e.Index]);
+            {
+                ElectionResult result = (ElectionResult)clbParties.Items[e.Index];
+                coalition.Parties.Add(result.Party);
+            }               
             if (coalition.Mayority(results, election) == true)
             {
                 lblMayority.Text = "Deze coalitie heeft een meerderheid!";
@@ -54,6 +60,43 @@ namespace Hulptool_Politiek
             {
                 lblMayority.Text = "Deze coalitie heeft een minderheid!";
             }
+        }
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl.SelectedTab == tabControl.TabPages["tpParties"])
+            {
+                lbParties.Items.Clear();
+                foreach (Party party in sql.LoadAllParties())
+                {
+                    lbParties.Items.Add(party);
+                }
+            }
+            else if (tabControl.SelectedTab == tabControl.TabPages["tpResults"])
+            {
+
+            }
+        }
+
+        private void lbParties_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (lbParties.SelectedItem != null)
+            {
+                PartyView view = new PartyView(lbParties.SelectedItem);
+                view.ShowDialog();
+            }
+        }
+
+        private void btnNewParty_Click(object sender, EventArgs e)
+        {
+            PartyView view = new PartyView();
+            view.ShowDialog();
+        }
+
+        private void btnEditResults_Click(object sender, EventArgs e)
+        {
+            ResultWindow result = new ResultWindow(election);
+            result.ShowDialog();
         }
     }
 }
