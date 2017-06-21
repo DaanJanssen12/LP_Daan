@@ -20,6 +20,10 @@ namespace Hulptool_Politiek.Models
             Seats = seats;
         }
 
+        public Election()
+        {
+        }
+
         public void ChangeResults(string partyAbbreviation, int votes, ISql sql)
         {
             int totalVotes = 0;

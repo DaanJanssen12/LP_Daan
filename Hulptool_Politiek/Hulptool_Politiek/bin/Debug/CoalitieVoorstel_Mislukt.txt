@@ -1,5 +1,5 @@
 Coalitie voorstel Tweede Kamer
-===============================
+==============================================================
 Aan: Willempie
  
 Partij		Zetels		Lijsttrekker
@@ -8,5 +8,5 @@ VVD		32		Mark Rutte
 CDA		19		Sybrand van Haersma Buma
 D66		19		Alexander Pechtold
 GL		14		Jesse Klaver
-===============================
+==============================================================
 Totaal:		84		Premier: Mark Rutte

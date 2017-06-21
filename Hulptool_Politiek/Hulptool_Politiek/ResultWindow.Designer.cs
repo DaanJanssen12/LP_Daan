@@ -36,20 +36,22 @@
             this.Update = new System.Windows.Forms.Button();
             this.tbDateTime = new System.Windows.Forms.TextBox();
             this.lblDateTime = new System.Windows.Forms.Label();
+            this.lblElection = new System.Windows.Forms.Label();
+            this.cbElections = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // cbParty
             // 
             this.cbParty.FormattingEnabled = true;
-            this.cbParty.Location = new System.Drawing.Point(234, 113);
+            this.cbParty.Location = new System.Drawing.Point(108, 55);
             this.cbParty.Name = "cbParty";
-            this.cbParty.Size = new System.Drawing.Size(121, 21);
+            this.cbParty.Size = new System.Drawing.Size(188, 21);
             this.cbParty.TabIndex = 0;
             // 
             // lblParty
             // 
             this.lblParty.AutoSize = true;
-            this.lblParty.Location = new System.Drawing.Point(80, 116);
+            this.lblParty.Location = new System.Drawing.Point(12, 58);
             this.lblParty.Name = "lblParty";
             this.lblParty.Size = new System.Drawing.Size(33, 13);
             this.lblParty.TabIndex = 1;
@@ -57,7 +59,7 @@
             // 
             // tbVotes
             // 
-            this.tbVotes.Location = new System.Drawing.Point(234, 162);
+            this.tbVotes.Location = new System.Drawing.Point(387, 58);
             this.tbVotes.Name = "tbVotes";
             this.tbVotes.Size = new System.Drawing.Size(121, 20);
             this.tbVotes.TabIndex = 2;
@@ -65,7 +67,7 @@
             // lblVotes
             // 
             this.lblVotes.AutoSize = true;
-            this.lblVotes.Location = new System.Drawing.Point(80, 162);
+            this.lblVotes.Location = new System.Drawing.Point(320, 61);
             this.lblVotes.Name = "lblVotes";
             this.lblVotes.Size = new System.Drawing.Size(54, 13);
             this.lblVotes.TabIndex = 3;
@@ -74,7 +76,7 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(231, 29);
+            this.lblTitle.Location = new System.Drawing.Point(234, 24);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(27, 13);
             this.lblTitle.TabIndex = 4;
@@ -82,7 +84,7 @@
             // 
             // Update
             // 
-            this.Update.Location = new System.Drawing.Point(188, 203);
+            this.Update.Location = new System.Drawing.Point(193, 147);
             this.Update.Name = "Update";
             this.Update.Size = new System.Drawing.Size(121, 35);
             this.Update.TabIndex = 5;
@@ -92,7 +94,7 @@
             // 
             // tbDateTime
             // 
-            this.tbDateTime.Location = new System.Drawing.Point(234, 71);
+            this.tbDateTime.Location = new System.Drawing.Point(387, 101);
             this.tbDateTime.Name = "tbDateTime";
             this.tbDateTime.Size = new System.Drawing.Size(121, 20);
             this.tbDateTime.TabIndex = 6;
@@ -101,17 +103,36 @@
             // lblDateTime
             // 
             this.lblDateTime.AutoSize = true;
-            this.lblDateTime.Location = new System.Drawing.Point(78, 71);
+            this.lblDateTime.Location = new System.Drawing.Point(320, 101);
             this.lblDateTime.Name = "lblDateTime";
             this.lblDateTime.Size = new System.Drawing.Size(41, 13);
             this.lblDateTime.TabIndex = 7;
             this.lblDateTime.Text = "Datum:";
             // 
+            // lblElection
+            // 
+            this.lblElection.AutoSize = true;
+            this.lblElection.Location = new System.Drawing.Point(12, 97);
+            this.lblElection.Name = "lblElection";
+            this.lblElection.Size = new System.Drawing.Size(59, 13);
+            this.lblElection.TabIndex = 8;
+            this.lblElection.Text = "Verkiezing:";
+            // 
+            // cbElections
+            // 
+            this.cbElections.FormattingEnabled = true;
+            this.cbElections.Location = new System.Drawing.Point(108, 97);
+            this.cbElections.Name = "cbElections";
+            this.cbElections.Size = new System.Drawing.Size(188, 21);
+            this.cbElections.TabIndex = 9;
+            // 
             // ResultWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(564, 273);
+            this.ClientSize = new System.Drawing.Size(564, 209);
+            this.Controls.Add(this.cbElections);
+            this.Controls.Add(this.lblElection);
             this.Controls.Add(this.lblDateTime);
             this.Controls.Add(this.tbDateTime);
             this.Controls.Add(this.Update);
@@ -137,5 +158,7 @@
         private System.Windows.Forms.Button Update;
         private System.Windows.Forms.TextBox tbDateTime;
         private System.Windows.Forms.Label lblDateTime;
+        private System.Windows.Forms.Label lblElection;
+        private System.Windows.Forms.ComboBox cbElections;
     }
 }

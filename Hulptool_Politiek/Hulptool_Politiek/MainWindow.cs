@@ -33,6 +33,7 @@ namespace Hulptool_Politiek
             election = (Election)cbElection.SelectedItem;
             gbEdit.Visible = true;
             results = sql.LoadResultsForElection(election);
+            clbParties.Items.Clear();
             foreach (ElectionResult result in results)
             {
                 election.AddResult(result);
@@ -80,6 +81,7 @@ namespace Hulptool_Politiek
             }
             else if (tabControl.SelectedTab == tabControl.TabPages["tpCoalition"])
             {
+                cbCoaltion.Items.Clear();
                 foreach (Coalition coalition in sql.LoadAllCoalitions())
                 {
                     cbCoaltion.Items.Add(coalition);
@@ -104,7 +106,7 @@ namespace Hulptool_Politiek
 
         private void btnEditResults_Click(object sender, EventArgs e)
         {
-            ResultWindow result = new ResultWindow(election, false);
+            ResultWindow result = new ResultWindow(election);
             result.ShowDialog();
         }
 
@@ -122,19 +124,21 @@ namespace Hulptool_Politiek
                 Coalition coalition = new Coalition(tbCoalitionName.Text, parties);
                 coalition.aMayority(parties, election);
                 sql.NewCoalition(coalition);
+                MessageBox.Show("Coalitie " + coalition.Name + " is gevormd.");
             }
             
         }
 
         private void btnNewElectionResult_Click(object sender, EventArgs e)
         {
-            ResultWindow newResult = new ResultWindow(election, true);
+            ResultWindow newResult = new ResultWindow();
             newResult.ShowDialog();
         }
 
         private void btnLoadCoalition_Click(object sender, EventArgs e)
         {
             Coalition coalition = (Coalition)cbCoaltion.SelectedItem;
+            lbCoaltionParties.Items.Clear();
             foreach (ElectionResult party in coalition.Parties)
             {
                 lbCoaltionParties.Items.Add(party);
@@ -143,26 +147,32 @@ namespace Hulptool_Politiek
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            Coalition coalition = (Coalition)cbCoaltion.SelectedItem;
-            string path = "CoalitieVoorstel.txt";
-
-            using (StreamWriter streamWriter = new StreamWriter(path))
+            try
             {
-                streamWriter.WriteLine("Coalitie voorstel "+coalition.ElectionName);
-                streamWriter.WriteLine("==============================================================");
-                streamWriter.WriteLine("Aan: Willempie");
-                streamWriter.WriteLine(" ");
-                streamWriter.WriteLine("Partij\t\tZetels\t\tLijsttrekker");
-                streamWriter.WriteLine(" ");
-                int totalSeats = 0;
-                foreach (ElectionResult res in coalition.Parties)
+                Coalition coalition = (Coalition)cbCoaltion.SelectedItem;
+                string path = "CoalitieVoorstel_" + coalition.Name + ".txt";
+
+                using (StreamWriter streamWriter = new StreamWriter(path))
                 {
-                    totalSeats = totalSeats + res.Seats;
-                    streamWriter.WriteLine(res.Party.Abbreviation + "\t\t" + res.Seats.ToString() + "\t\t" + res.Party.LeadCandidate.Name);
+                    streamWriter.WriteLine("Coalitie voorstel " + coalition.ElectionName);
+                    streamWriter.WriteLine("==============================================================");
+                    streamWriter.WriteLine("Aan: Willempie");
+                    streamWriter.WriteLine(" ");
+                    streamWriter.WriteLine("Partij\t\tZetels\t\tLijsttrekker");
+                    streamWriter.WriteLine(" ");
+                    int totalSeats = 0;
+                    foreach (ElectionResult res in coalition.Parties)
+                    {
+                        totalSeats = totalSeats + res.Seats;
+                        streamWriter.WriteLine(res.Party.Abbreviation + "\t\t" + res.Seats.ToString() + "\t\t" + res.Party.LeadCandidate.Name);
+                    }
+                    streamWriter.WriteLine("==============================================================");
+                    streamWriter.WriteLine("Totaal:\t\t" + totalSeats.ToString() + "\t\tPremier: " + coalition.Premier.Name);
                 }
-                streamWriter.WriteLine("==============================================================");
-                streamWriter.WriteLine("Totaal:\t\t"+totalSeats.ToString()+"\t\tPremier: "+coalition.Premier.Name);
+                MessageBox.Show("Coalitievoorstel opgeslagen als: " + path);
             }
+            catch { MessageBox.Show("Er is iets mis gegaan, heeft u wel een coalitie geselecteerd?");}
+            
         }
     }
 }

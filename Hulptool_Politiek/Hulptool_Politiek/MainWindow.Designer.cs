@@ -134,15 +134,15 @@
             this.lbParties.FormattingEnabled = true;
             this.lbParties.Location = new System.Drawing.Point(22, 34);
             this.lbParties.Name = "lbParties";
-            this.lbParties.Size = new System.Drawing.Size(166, 212);
+            this.lbParties.Size = new System.Drawing.Size(330, 212);
             this.lbParties.TabIndex = 0;
             this.lbParties.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbParties_MouseDoubleClick);
             // 
             // btnNewParty
             // 
-            this.btnNewParty.Location = new System.Drawing.Point(263, 34);
+            this.btnNewParty.Location = new System.Drawing.Point(358, 34);
             this.btnNewParty.Name = "btnNewParty";
-            this.btnNewParty.Size = new System.Drawing.Size(91, 35);
+            this.btnNewParty.Size = new System.Drawing.Size(166, 53);
             this.btnNewParty.TabIndex = 1;
             this.btnNewParty.Text = "Nieuwe Partij";
             this.btnNewParty.UseVisualStyleBackColor = true;

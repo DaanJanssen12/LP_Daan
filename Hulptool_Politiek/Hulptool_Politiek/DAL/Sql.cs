@@ -245,14 +245,14 @@ namespace Hulptool_Politiek.DAL
 
                     foreach (Coalition coalition in coalitions)
                     {
-                        string sql2 = "SELECT * FROM CoalitiePartij WHERE CoalitieId = @id";
+                        string sql2 = "SELECT cp.PartijId, v.Naam FROM CoalitiePartij cp JOIN VerkiezingsPartij vp on vp.PartijId = cp.PartijId JOIN Verkiezing v on v.VerkiezingId = vp.VerkiezingId WHERE CoalitieId = @id";
                         SqlCommand cmd2 = new SqlCommand(sql2, db);
                         cmd2.Parameters.Add(new SqlParameter("@id", coalition.Id));
                         using (SqlDataReader reader = cmd2.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                string electionName = "Tweede Kamer";
+                                string electionName = reader["Naam"].ToString(); ;
                                 coalition.ElectionName = electionName;
                                 foreach (ElectionResult res in this.LoadResultsForElection(new Election(electionName, 150)))
                                 {
