@@ -1,0 +1,10 @@
+CREATE PROC NieuwResultaat (@id INT, @stemmen INT, @percentage FLOAT, @zetels INT, @verkiezing VARCHAR(50))
+AS
+DECLARE @vId INT
+DECLARE @uId TABLE (id INT)
+SET @vId = (SELECT VerkiezingId FROM Verkiezing WHERE Naam = @verkiezing)
+INSERT INTO UitslagRegel(PartijId, Stemmen, Percentage, Zetels)
+OUTPUT Inserted.UitslagId INTO @uId
+VALUES (@id, @stemmen, @percentage, @zetels)
+INSERT INTO Uitslag (UitslagId, VerkiezingId)
+VALUES ((SELECT id FROM @uId), @vId)
