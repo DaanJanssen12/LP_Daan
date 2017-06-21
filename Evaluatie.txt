@@ -1,0 +1,9 @@
+Evalutatie:
+
+In het algemeen in de liveperformance best goed verlopen en heb ik mijn planning goed gevolgd.
+Alleen had de hoeveelheid tijd dat het programmeren zou gaan kosten wat onderschat en dit bracht mij op het laatst in tijdnood.
+Ik heb een werkende applicatie neergezet alleen is het lang niet wat ik dacht dat het zou worden en is er nogal een gebrek aan unittests. 
+
+Bronnen Gebruikt:
+
+https://stackoverflow.com/questions/3666682/which-checkedlistbox-event-triggers-after-a-item-is-checked

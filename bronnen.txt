@@ -1,3 +1,0 @@
-Bronnen:
-
-https://stackoverflow.com/questions/3666682/which-checkedlistbox-event-triggers-after-a-item-is-checked
